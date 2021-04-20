@@ -1,24 +1,22 @@
-# scm themeing
-SCM_THEME_PROMPT_DIRTY="-"
-SCM_THEME_PROMPT_CLEAN="+"
-SCM_THEME_PROMPT_PREFIX=""
-SCM_THEME_PROMPT_SUFFIX=""
+#!/usr/bin/env bash
+SCM_THEME_PROMPT_DIRTY=" ${red}✗"
+SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓"
+SCM_THEME_PROMPT_PREFIX=" |"
+SCM_THEME_PROMPT_SUFFIX="${green}|"
 
-# TODO: need a check for OS before adding this to the prompt
-# ${debian_chroot:+($debian_chroot)}
+GIT_THEME_PROMPT_DIRTY=" ${red}✗"
+GIT_THEME_PROMPT_CLEAN=" ${bold_green}✓"
+GIT_THEME_PROMPT_PREFIX=" ${green}|"
+GIT_THEME_PROMPT_SUFFIX="${green}|"
 
-#added TITLEBAR for updating the tab and window titles with the pwd
-case $TERM in
-	xterm*)
-	TITLEBAR='\[\033]0;\w\007\]'
-	;;
-	*)
-	TITLEBAR=""
-	;;
-esac
+RVM_THEME_PROMPT_PREFIX="|"
+RVM_THEME_PROMPT_SUFFIX="|"
 
 function prompt_command() {
-    PROMPT='${green}\u${normal}@${green}\h${normal} : ${blue}\w${normal}${red}$(prompt_char)$(git_prompt_info)${normal}~ '
+    #PS1="${bold_cyan}$(scm_char)${green}$(scm_prompt_info)${purple}$(ruby_version_prompt) ${yellow}\h ${reset_color}in ${green}\w ${reset_color}\n${green}→${reset_color} "
+    #PS1="\n${purple}\h: ${reset_color} ${green}\w\n${bold_cyan}$(scm_char)${green}$(scm_prompt_info) ${green}→${reset_color} "
+    #PS1="\n${cyan}\h: ${reset_color} ${yellow}\w\n${red}$(scm_char)${red}$(scm_prompt_info) ${green}→${reset_color} "
+    PS1="\n${cyan}\h: ${reset_color} ${yellow}\w ${green}$(scm_prompt_info)\n${reset_color}~ "
 }
 
 safe_append_prompt_command prompt_command

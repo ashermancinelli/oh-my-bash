@@ -64,7 +64,7 @@ parse_git_branch () {
 }
 
 function prompt_command() {
-  PS1="\[${cyan}\]\u \[${bold}$WHITE\]at \[${yellow}\]\h \[$WHITE\]in \[${green}\]\w\[${bold}${WHITE}\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[${bold_purple}\]\$(parse_git_branch)\[$WHITE\]\n~ \[$RESET\]"
+  PS1="\[${cyan}\]\u \[${bold}$WHITE\]at \[${yellow}\]\h \[$WHITE\]in \[${green}\]\w\[${bold}${WHITE}\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[${bold_purple}\]\$(parse_git_branch)\[$WHITE\]\n$ \[$RESET\]"
 }
 
 safe_append_prompt_command prompt_command
